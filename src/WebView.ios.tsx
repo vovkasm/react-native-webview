@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  UIManager as NotTypedUIManager,
+  UIManager,
   View,
   requireNativeComponent,
   NativeModules,
@@ -26,12 +26,10 @@ import {
   NativeWebViewIOS,
   ViewManager,
   State,
-  RNCWebViewUIManager,
+  WebViewCommands,
 } from './WebViewTypes';
 
 import styles from './WebView.styles';
-
-const UIManager = NotTypedUIManager as RNCWebViewUIManager;
 
 const { resolveAssetSource } = Image;
 const processDecelerationRate = (
@@ -73,7 +71,9 @@ class WebView extends React.Component<IOSWebViewProps, State> {
   webViewRef = React.createRef<NativeWebViewIOS>();
 
   // eslint-disable-next-line react/sort-comp
-  getCommands = () => UIManager.getViewManagerConfig('RNCWebView').Commands;
+  getCommands(): WebViewCommands {
+    return UIManager.getViewManagerConfig('RNCWebView').Commands as WebViewCommands;
+  }
 
   /**
    * Go forward one page in the web view's history.

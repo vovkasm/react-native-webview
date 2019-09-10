@@ -6,7 +6,6 @@ import {
   ViewProps,
   NativeMethodsMixin,
   Constructor,
-  UIManagerStatic,
   NativeScrollEvent,
 } from 'react-native';
 
@@ -19,14 +18,7 @@ export interface WebViewCommands {
   injectJavaScript: number;
   loadUrl: number;
   requestFocus: number;
-}
-
-export interface RNCWebViewUIManager extends UIManagerStatic {
-  getViewManagerConfig: (
-    name: 'RNCWebView',
-  ) => {
-    Commands: WebViewCommands;
-  };
+  [key: string]: number;
 }
 
 type WebViewState = 'IDLE' | 'LOADING' | 'ERROR';

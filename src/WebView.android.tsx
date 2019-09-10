@@ -3,7 +3,7 @@ import React from 'react';
 import {
   Image,
   requireNativeComponent,
-  UIManager as NotTypedUIManager,
+  UIManager,
   View,
   NativeModules,
   ImageSourcePropType,
@@ -26,12 +26,10 @@ import {
   AndroidWebViewProps,
   NativeWebViewAndroid,
   State,
-  RNCWebViewUIManager,
+  WebViewCommands,
 } from './WebViewTypes';
 
 import styles from './WebView.styles';
-
-const UIManager = NotTypedUIManager as RNCWebViewUIManager;
 
 const RNCWebView = requireNativeComponent(
   'RNCWebView',
@@ -67,7 +65,9 @@ class WebView extends React.Component<AndroidWebViewProps, State> {
 
   webViewRef = React.createRef<NativeWebViewAndroid>();
 
-  getCommands = () => UIManager.getViewManagerConfig('RNCWebView').Commands;
+  getCommands(): WebViewCommands {
+    return UIManager.getViewManagerConfig('RNCWebView').Commands as WebViewCommands;
+  }
 
   goForward = () => {
     UIManager.dispatchViewManagerCommand(
