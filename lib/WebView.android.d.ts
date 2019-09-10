@@ -1,5 +1,5 @@
 import React from 'react';
-import { AndroidWebViewProps, NativeWebViewAndroid, State } from './WebViewTypes';
+import { AndroidWebViewProps, NativeWebViewAndroid, State, WebViewCommands } from './WebViewTypes';
 /**
  * Renders a native WebView.
  */
@@ -19,7 +19,7 @@ declare class WebView extends React.Component<AndroidWebViewProps, State> {
     static isFileUploadSupported: () => Promise<any>;
     state: State;
     webViewRef: React.RefObject<NativeWebViewAndroid>;
-    getCommands: () => import("./WebViewTypes").WebViewCommands;
+    getCommands(): WebViewCommands;
     goForward: () => void;
     goBack: () => void;
     reload: () => void;

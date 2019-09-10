@@ -1,5 +1,5 @@
 import { ReactElement, Component } from 'react';
-import { NativeSyntheticEvent, ViewProps, NativeMethodsMixin, Constructor, UIManagerStatic, NativeScrollEvent } from 'react-native';
+import { NativeSyntheticEvent, ViewProps, NativeMethodsMixin, Constructor, NativeScrollEvent } from 'react-native';
 export interface WebViewCommands {
     goForward: number;
     goBack: number;
@@ -9,11 +9,7 @@ export interface WebViewCommands {
     injectJavaScript: number;
     loadUrl: number;
     requestFocus: number;
-}
-export interface RNCWebViewUIManager extends UIManagerStatic {
-    getViewManagerConfig: (name: 'RNCWebView') => {
-        Commands: WebViewCommands;
-    };
+    [key: string]: number;
 }
 declare type WebViewState = 'IDLE' | 'LOADING' | 'ERROR';
 interface BaseState {

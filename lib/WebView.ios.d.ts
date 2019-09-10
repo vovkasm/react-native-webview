@@ -1,5 +1,5 @@
 import React from 'react';
-import { IOSWebViewProps, NativeWebViewIOS, State } from './WebViewTypes';
+import { IOSWebViewProps, NativeWebViewIOS, State, WebViewCommands } from './WebViewTypes';
 declare class WebView extends React.Component<IOSWebViewProps, State> {
     static defaultProps: {
         javaScriptEnabled: boolean;
@@ -10,7 +10,7 @@ declare class WebView extends React.Component<IOSWebViewProps, State> {
     static isFileUploadSupported: () => Promise<boolean>;
     state: State;
     webViewRef: React.RefObject<NativeWebViewIOS>;
-    getCommands: () => import("./WebViewTypes").WebViewCommands;
+    getCommands(): WebViewCommands;
     /**
      * Go forward one page in the web view's history.
      */
